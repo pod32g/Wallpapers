@@ -1,9 +1,10 @@
 import React from "react"
-import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native"
+import { NavigationContainer, NavigationContainerRef, DarkTheme } from "@react-navigation/native"
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
 import { RootParamList } from "./types"
 import { PrimaryNavigator } from "./primary-navigator"
+import { Provider as PaperProvider, DarkTheme as PaperDarkTheme } from 'react-native-paper'
 
 const Stack = createNativeStackNavigator<RootParamList>()
 
@@ -33,9 +34,11 @@ export const RootNavigator = React.forwardRef<
   Partial<React.ComponentProps<typeof NavigationContainer>>
 >((props, ref) => {
   return (
-    <NavigationContainer {...props} ref={ref}>
-      <RootStack />
-    </NavigationContainer>
+    <PaperProvider theme={PaperDarkTheme}>
+      <NavigationContainer theme={DarkTheme} {...props} ref={ref}>
+        <RootStack />
+      </NavigationContainer>
+    </PaperProvider>
   )
 })
 

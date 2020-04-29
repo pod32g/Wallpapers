@@ -5,6 +5,8 @@ import * as Types from "./api.types"
 
 /**
  * Manages all requests to the API.
+ * https://capi-v2.sankakucomplex.com/posts/keyset?page=1&tags=Sakimichan%20threshold:1%20-tagme%20hide_posts_in_books:in-larger-tags%20locked_rating:true%20rating:safe&limit=60&t=1588048974.601595
+https://capi-v2.sankakucomplex.com/posts/keyset?page=1&tags=threshold:1%20hide_posts_in_books:in-larger-tags%20locked_rating:true%20rating:safe&limit=60&t=1588048932.265108
  */
 export class Api {
   /**

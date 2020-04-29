@@ -1,21 +1,45 @@
 import React from "react"
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { WelcomeScreen, DemoScreen } from "../screens"
+import { HomeScreen } from "../screens"
 import { PrimaryParamList } from "./types"
+import { Text } from 'react-native'
+import { theme } from "../theme/customTheme"
+import { DarkTheme as PaperDarkTheme, Appbar } from 'react-native-paper'
+
 
 const Stack = createNativeStackNavigator<PrimaryParamList>()
 
+//Custom Material design HeadBar
+const Header = ({ scene, previous, navigation }) => {
+  const { options } = scene.descriptor;
+  const title =
+    options.headerTitle !== undefined
+      ? options.headerTitle
+      : options.title !== undefined
+        ? options.title
+        : scene.route.name;
+
+  return (
+    <Appbar.Header dark theme={PaperDarkTheme}>
+      {previous ? (
+        <Appbar.BackAction
+          onPress={() => navigation.pop()}
+          color={theme.colors.accent}
+        />
+      ) : options.headerLeft ? (<options.headerLeft></options.headerLeft>) : <Text></Text>}
+      <Appbar.Content
+        title={title}
+      />
+      {options.headerRight ? <options.headerRight></options.headerRight> : <Text></Text>}
+    </Appbar.Header>
+  );
+};
+
 export function PrimaryNavigator() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        gestureEnabled: true,
-      }}
-    >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
-      <Stack.Screen name="demo" component={DemoScreen} />
+    <Stack.Navigator>
+      <Stack.Screen name="welcome" component={HomeScreen} />
     </Stack.Navigator>
   )
 }
