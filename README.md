@@ -1,6 +1,4 @@
-# wallpapers
-
-[![CircleCI](https://circleci.com/gh/infinitered/ignite-bowser.svg?style=svg)](https://circleci.com/gh/infinitered/ignite-bowser)
+# Wallpapers
 
 ## Booru client started with the Bowser boilerplate
 
